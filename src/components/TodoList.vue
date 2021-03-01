@@ -1,7 +1,14 @@
 <template>
   <div>
     <ul>
-      <TodoItem />
+      <TodoItem 
+        v-for="(todo, i) of todos" 
+        v-bind:index="i"
+        v-bind:todo="todo"
+        v-bind:key="todo.id"
+        v-bind:isChecked="todo.completed"
+        v-on:remove-todo="removeTodo"
+      />
     </ul>
   </div>
 </template>
@@ -9,8 +16,22 @@
 <script>
   import TodoItem from '@/components/TodoItem'
   export default {
+    props: ['todos'],
     components: {
       TodoItem
+    },
+    methods: {
+      removeTodo(id) {
+        this.$emit('remove-todo', id);
+      }
     }
   }
 </script>
+
+<style scoped>
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>
