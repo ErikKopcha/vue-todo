@@ -1,14 +1,9 @@
 <template>
   <div id="app">
     <h1>Todo application</h1>
-    <AddTodo
-      @add-todo="addTodo"
-    />
     <hr>
-    <TodoList
-      v-bind:todos="todos"
-      @remove-todo="removeTodo"
-    />
+
+    <router-view />
   </div>
 </template>
 
@@ -50,6 +45,8 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    max-width: 700px;
+    margin: 60px auto 0 auto;
+    border: 1px solid black;
   }
 </style>

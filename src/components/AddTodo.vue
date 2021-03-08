@@ -38,7 +38,7 @@ export default {
 
   input {
     padding: 0 1rem;
-    width: 100%;
+    width: 200px;
     max-width: 400px;
     margin-right: 1rem;
     min-height: 35px;
