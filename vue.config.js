@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vue-vm-crs/'
+    publicPath: '/vue-vm-crs/dist/index.html'
 }
