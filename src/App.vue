@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <h1>Todo application</h1>
-    <hr>
-
     <router-view />
   </div>
 </template>
@@ -39,6 +36,8 @@ export default {
 </script>
 
 <style>
+@import "~materialize-css/dist/css/materialize.min.css";
+
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -46,7 +45,9 @@ export default {
     text-align: center;
     color: #2c3e50;
     max-width: 700px;
-    margin: 60px auto 0 auto;
-    border: 1px solid black;
+  }
+
+  html{
+    background-color: #000000;
   }
 </style>

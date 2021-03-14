@@ -1,28 +1,35 @@
 <template>
-  <div>
-    <h2>Pages</h2>
-    <router-link to="/">Home</router-link>
+  <div class="todos">
+    <router-link to="/">
+      <div class="text-effect">
+        <h1 class="neon" data-text="home" contenteditable></h1>
+        <div class="gradient"></div>
+        <div class="spotlight"></div>
+      </div>
+    </router-link>
     <hr>
+    <div class="todos__wrapper">
+      <div class="form-wrapper">
+        <AddTodo
+            @add-todo="addTodo"
+        />
 
-    <div class="form-wrapper">
-      <AddTodo
-          @add-todo="addTodo"
+        <select class="select-filter" v-model="filter">
+          <option name="filter-opt" value="all">All</option>
+          <option name="filter-opt" value="completed">Completed</option>
+          <option name="filter-opt" value="not-completed">Not Completed</option>
+        </select>
+      </div>
+
+      <hr>
+      <Loader v-if="loading" />
+      <TodoList
+          v-else-if="filteredTodos.length"
+          v-bind:todos="filteredTodos"
+          @remove-todo="removeTodo"
       />
-      <select class="select-filter" v-model="filter">
-        <option name="filter-opt" value="all">All</option>
-        <option name="filter-opt" value="completed">Completed</option>
-        <option name="filter-opt" value="not-completed">Not Completed</option>
-      </select>
+      <p v-else>No todos</p>
     </div>
-
-    <hr>
-    <Loader v-if="loading" />
-    <TodoList
-        v-else-if="filteredTodos.length"
-        v-bind:todos="filteredTodos"
-        @remove-todo="removeTodo"
-    />
-    <p v-else>No todos</p>
   </div>
 </template>
 
@@ -81,10 +88,36 @@ export default {
 </script>
 
 <style scoped>
+  .text-effect, .neon {
+    max-height: 100px;
+  }
+
+  .neon {
+    font-size: 40px;
+  }
+
+  .todos {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+  }
+
+  .todos__wrapper {
+    margin: 50px auto 0 auto;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  h2 {
+    padding: 0;
+    margin: 0;
+  }
+
   .form-wrapper {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+
   }
   .select-filter {
     margin-right: 15px;

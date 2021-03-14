@@ -1,7 +1,17 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <input placeholder="Todo name" type="text" v-model="title">
-    <button type="submit">Create</button>
+
+    <div class="row">
+      <div class="input-field">
+        <input id="task-name" type="text" class="validate"
+               v-model="title" />
+        <label class="" for="task-name">Todo name</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+      Create
+      <i class="material-icons right">send</i>
+    </button>
   </form>
 </template>
 
@@ -11,6 +21,9 @@ export default {
     return {
       title: ''
     }
+  },
+  mounted() {
+    M.updateTextFields();
   },
   methods: {
     onSubmit() {
@@ -36,14 +49,17 @@ export default {
     justify-content: center;
   }
 
-  input {
+  .input-field {
+    margin-bottom: 7px;
+  }
+
+  input#task-name {
     padding: 0 1rem;
     width: 200px;
     max-width: 400px;
-    margin-right: 1rem;
+    margin: 0 1rem 0 0;
     min-height: 35px;
-    border: none;
-    background: rgb(238, 238, 238);
+    color: white;
   }
 
   button {
