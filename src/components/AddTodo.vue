@@ -54,7 +54,7 @@ export default {
   }
 
   input#task-name {
-    padding: 0 1rem;
+    padding: 0;
     width: 200px;
     max-width: 400px;
     margin: 0 1rem 0 0;

@@ -1,7 +1,7 @@
 <template>
   <div class="todos">
     <router-link to="/">
-      <div class="text-effect">
+      <div class="text-effect small">
         <h1 class="neon" data-text="home" contenteditable></h1>
         <div class="gradient"></div>
         <div class="spotlight"></div>
@@ -14,11 +14,15 @@
             @add-todo="addTodo"
         />
 
-        <select class="select-filter" v-model="filter">
-          <option name="filter-opt" value="all">All</option>
-          <option name="filter-opt" value="completed">Completed</option>
-          <option name="filter-opt" value="not-completed">Not Completed</option>
-        </select>
+        <div class="input-field col s12">
+          <select class="select-filter" v-model="filter">
+            <option value="" disabled selected>Choose your option</option>
+            <option name="filter-opt" value="all">All</option>
+            <option name="filter-opt" value="completed">Completed</option>
+            <option name="filter-opt" value="not-completed">Not Completed</option>
+          </select>
+          <label>Select type</label>
+        </div>
       </div>
 
       <hr>
@@ -48,6 +52,9 @@ export default {
     }
   },
   mounted() {
+    const elems = document.querySelectorAll('select');
+    const instances = M.FormSelect.init(elems, {});
+
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=7')
       .then(response => response.json())
       .then(json => {
@@ -80,19 +87,18 @@ export default {
       this.todos.push(todo)
     }
   },
-
   components: {
     TodoList, AddTodo, Loader
   }
 }
 </script>
 
-<style scoped>
-  .text-effect, .neon {
+<style>
+  .text-effect.small, .text-effect.small .neon {
     max-height: 100px;
   }
 
-  .neon {
+  .text-effect.small .neon {
     font-size: 40px;
   }
 
@@ -117,10 +123,8 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+  }
 
-  }
-  .select-filter {
-    margin-right: 15px;
-    width: 130px;
-  }
+  .input-field .select-wrapper input {color: white;}
+  .input-field label { left: 0 !important; }
 </style>
