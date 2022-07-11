@@ -16,7 +16,6 @@
 
         <div class="input-field col s12">
           <select class="select-filter" v-model="filter">
-            <option value="" disabled selected>Choose your option</option>
             <option name="filter-opt" value="all">All</option>
             <option name="filter-opt" value="completed">Completed</option>
             <option name="filter-opt" value="not-completed">Not Completed</option>
@@ -27,11 +26,13 @@
 
       <hr>
       <Loader v-if="loading" />
+
       <TodoList
           v-else-if="filteredTodos.length"
           v-bind:todos="filteredTodos"
           @remove-todo="removeTodo"
       />
+
       <p v-else>No todos</p>
     </div>
   </div>
@@ -69,13 +70,10 @@ export default {
       switch (this.filter) {
         case 'all':
           return this.todos
-          break;
         case 'completed':
           return this.todos.filter(i => i.completed)
-          break;
         case 'not-completed':
           return this.todos.filter(i => !i.completed)
-          break;
       }
     }
   },
@@ -127,4 +125,8 @@ export default {
 
   .input-field .select-wrapper input {color: white;}
   .input-field label { left: 0 !important; }
+
+  .dropdown-content {
+    background-color: #181818;
+  }
 </style>

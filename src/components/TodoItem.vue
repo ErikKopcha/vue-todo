@@ -7,10 +7,12 @@
       />
       <span class="ta-l">{{todo.title | uppercase}}</span>
     </label>
-    <button class="waves-effect waves-light btn modal-trigger ml-a" href="#update-value" @click.prevent="showUpdateModal(todo.title)">edit</button>
-    <button class="waves-effect waves-light btn red"
-      v-on:click="$emit('remove-todo', todo.id)">
-      <i class="material-icons">close</i>
+    <button class="waves-effect waves-light btn modal-trigger ml-a btn-edit" href="#update-value" @click.prevent="showUpdateModal(todo.title)">edit</button>
+    <button
+      class="waves-effect waves-light btn red btn-remove"
+      v-on:click="$emit('remove-todo', todo.id)"
+    >
+      Remove
     </button >
   </li>
 </template>
@@ -44,7 +46,7 @@ export default {
           <input type="text" value="${value}">
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-update">Agree</a>
+          <a href="#!" class="modal-close waves-effect waves-light btn btn-update">Agree</a>
         </div>
       `;
 
@@ -96,5 +98,13 @@ export default {
 
   .ta-l {
     text-align: left;
+  }
+
+  .btn-edit {
+    min-width: 65px;
+  }
+
+  .btn-remove {
+    min-width: 100px;
   }
 </style>

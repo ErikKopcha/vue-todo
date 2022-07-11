@@ -50,4 +50,13 @@ export default {
   html{
     background-color: #000000;
   }
+
+  .modal, .modal .modal-footer {
+    background-color: #0e0e0e;
+  }
+
+  .modal .modal-content h4,
+  .modal .modal-content input{
+    color: #c9c9c9;
+  }
 </style>
